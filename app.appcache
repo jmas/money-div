@@ -1,6 +1,12 @@
 CACHE MANIFEST
 index.html
-styles.css
-contributors.js
-index.js
-favicon.png
+assets/css/app.css
+assets/js/contributors.js
+assets/js/app.js
+assets/images/favicon.png
+assets/images/favicon.ico
+assets/images/favicon-16x16.png
+assets/images/favicon-32x32.png
+assets/images/favicon-150x150.png
+assets/images/safari-pinned-tab.svg
+assets/images/apple-touch-icon.png

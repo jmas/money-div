@@ -1,0 +1,17 @@
+body {
+  background-color: #eee;
+}
+
+.app-head {
+  background-color: #fff;
+  padding-top: 1rem;
+}
+
+.app-body {
+  padding-top: 1rem;
+}
+
+.app-contributors-list:not(:empty) {
+  border-bottom: 1px solid silver;
+  margin-bottom: 1rem;
+}

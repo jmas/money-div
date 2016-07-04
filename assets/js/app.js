@@ -55,7 +55,7 @@
       return '<div class="row">'
         +'  <div class="column small-5">'+item.name+'</div>'
         +'  <div class="column small-5"><input class="js-contributor-item-value-field" data-contributor-index="'+index+'" type="number" value="'+item.value+'" /></div>'
-        +'  <div class="column small-2"><button class="js-contributor-item-remove-btn button expanded" data-contributor-index="'+index+'" class="button">&times;</button></div>'
+        +'  <div class="column small-2"><button class="js-contributor-item-remove-btn button alert expanded" data-contributor-index="'+index+'" class="button">&times;</button></div>'
         +'</div>';
     }).join('');
     $contributorsList.html(html);
@@ -63,8 +63,8 @@
     $contributorsList.find('.js-contributor-item-remove-btn').on('click', handleContributorRemoveBtnClick);
   }
 
-  function renderDebetors () {
-    var debetors = window.contributors.getDebetors();
+  function renderDebtors () {
+    var debetors = window.contributors.getDebtors();
     var html = debetors.map(function (item) {
       return '<div class="row">'
         +'  <div class="column small-4"><strong>'+item.from+'</strong></div>'
@@ -79,9 +79,9 @@
   function handleContributorFormSubmit (event) {
     event.preventDefault();
     var name = $contributorNameField.val();
-    var value = parseFloat($contributorValueField.val());
-    if (! name || ! value) {
-      alert('Имя и Сумма - обязательно должны быть заполнены!');
+    var value = parseFloat($contributorValueField.val()) || 0;
+    if (! name) {
+      alert('Name is required!');
       return;
     }
     window.contributors.add(name, value);
@@ -108,7 +108,7 @@
 
   function redraw () {
     renderContributors();
-    renderDebetors();
+    renderDebtors();
     location.href = '#' + _b64EncodeUnicode(JSON.stringify(contributors.getAll()));
   }
 })();

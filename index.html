@@ -7,33 +7,32 @@
     <meta name="theme-color" content="#e71feb" />
     <link rel="manifest" href="manifest.json" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css" />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon.png" />
-    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
-    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#e71feb">
+    <link rel="stylesheet" href="assets/css/app.css" />
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/images/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="assets/images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="assets/images/favicon-16x16.png" sizes="16x16" />
+    <link rel="mask-icon" href="assets/images/safari-pinned-tab.svg" color="#e71feb">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.js"></script>
   </head>
   <body>
 
-    <div class="head">
+    <div class="app-head">
       <form id="contributor-form">
         <div class="row">
-          <div class="column small-5"><input id="contributor-name-field" type="text" placeholder="Имя" required /></div>
-          <div class="column small-5"><input id="contributor-value-field" type="number" placeholder="Сумма" required /></div>
+          <div class="column small-5"><input id="contributor-name-field" type="text" placeholder="Name" required /></div>
+          <div class="column small-5"><input id="contributor-value-field" type="number" placeholder="Value" /></div>
           <div class="column small-2"><button class="button expanded" type="submit">+</button></div>
         </div>
       </form>
     </div>
 
-    <div class="body">
-      <div id="contributors-list"></div>
-      <hr />
-      <div id="debetors-list"></div>
+    <div class="app-body">
+      <div class="app-contributors-list" id="contributors-list"></div>
+      <div class="app-debetors-list" id="debetors-list"></div>
     </div>
 
-    <script src="contributors.js"></script>
-    <script src="index.js"></script>
+    <script src="assets/js/contributors.js"></script>
+    <script src="assets/js/app.js"></script>
   </body>
 </html>

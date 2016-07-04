@@ -24,25 +24,22 @@
     return _items;
   }
 
-  function getDebetors () {
-    var totalValue = 0,
-        equalPayment = 0,
-        _debetors = [], _lenders = [],
-        lender = null, debtor = null,
-        debetors = [], delta = 0;
-    totalValue = _items.reduce(function (p,c) { return p + c.value; }, 0);
-    equalPayment = totalValue/_items.length;
+  function getDebtors () {
+    var debtors = [];
+    var delta = 0;
+    var totalValue = _items.reduce(function (p,c) { return p + c.value; }, 0);
+    var equalPayment = totalValue/_items.length;
     var temp = _items.map(function (item) { return { name: item.name, value: equalPayment - item.value }; });
-    _debetors = temp.filter(function (item) { return item.value > 0; });
-    _lenders = temp.filter(function (item) { return item.value < 0; });
-    lender = _lenders[0];
-    debtor = _debetors[0];
-    while (_lenders.length > 0 && _debetors.length > 0) {
+    var _debtors = temp.filter(function (item) { return item.value > 0; });
+    var _lenders = temp.filter(function (item) { return item.value < 0; });
+    var lender = _lenders[0];
+    var debtor = _debtors[0];
+    while (_lenders.length > 0 && _debtors.length > 0) {
       lender = lender || _lenders[0];
-      debtor = debtor || _debetors[0];
+      debtor = debtor || _debtors[0];
       delta = debtor.value + lender.value;
       if (delta < 0) {
-        debetors.push({
+        debtors.push({
           from: debtor.name,
           to: lender.name,
           value: debtor.value
@@ -50,7 +47,7 @@
         lender.value += debtor.value;
         debtor.value = 0;
       } else {
-        debetors.push({
+        debtors.push({
           from: debtor.name,
           to: lender.name,
           value: -lender.value
@@ -59,7 +56,7 @@
         lender.value = 0;
       }
       if (debtor.value === 0) {
-        _debetors.splice(0, 1);
+        _debtors.splice(0, 1);
         debtor = null;
       }
       if (lender.value === 0) {
@@ -68,7 +65,7 @@
       }
       delta = 0;
     }
-    return debetors;
+    return debtors;
   }
 
   window.contributors = {
@@ -77,6 +74,6 @@
     set: set,
     update: update,
     remove: remove,
-    getDebetors: getDebetors
+    getDebtors: getDebtors
   };
 })();
